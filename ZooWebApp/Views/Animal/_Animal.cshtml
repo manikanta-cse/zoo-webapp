@@ -1,0 +1,78 @@
+﻿@{
+	Layout = null;
+}
+
+<div class="container" >
+    <div class="page-header">
+        <h1 ng-bind="title"></h1>
+    </div>
+        
+    <form class="form-horizontal" novalidate name="animalCreationForm" ng-submit="submit(animal)">
+        <div class="form-group">
+            <label class="control-label col-md-2" for="name">Animal Name :</label>
+            <div class="col-md-3">
+                <input type="text" class="form-control" id="name" placeholder="Enter Animal Name" name="name" ng-model="animal.animalName" required="" ng-pattern="/^[a-zA-Z\s]*$/" ng-blur="validate()">
+            </div>
+            <div class="col-md-3 text-danger">
+                <div ng-show="animalCreationForm.name.$touched && animalCreationForm.name.$error.required">Animal Name is required</div>
+                <div ng-show="animalCreationForm.name.$error.pattern && animalCreationForm.name.$touched">Name must contain only alphabets</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="species">Species :</label>
+            <div class="col-sm-3">
+                <select class="form-control" ng-model="animal.species" ng-options="specie.Name for specie in species track by specie.SpeciesId" id="species" name="species" required="" ng-blur="validate()">
+                    <option value="" selected="selected">Select Species</option>
+                </select>
+            </div>
+            <div class="col-md-2 text-danger">
+                <div ng-show="animalCreationForm.species.$touched && animalCreationForm.species.$error.required">Species has not been selected</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="year">Year of Birth :</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" id="year" placeholder="Enter Year of Birth" ng-minlength="4" ng-maxlength="4" name="year" ng-pattern="/^[0-9]*$/" ng-model="animal.yearOfBirth" ng-blur="calcuateAge(animal.yearOfBirth)" required="">
+            </div>
+            <div class="col-md-3 text-danger">
+                <div ng-show="animalCreationForm.year.$error.required && animalCreationForm.year.$touched">Year of Birth is required</div>
+                <div ng-show="animalCreationForm.year.$error.minlength || animalCreationForm.year.$error.maxlength && (animalCreationForm.year.$touched)">
+                    Year of birth must be 4 digits
+                </div>
+                <div ng-show="animalCreationForm.year.$error.pattern && animalCreationForm.year.$touched">Not a valid year!</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="age">Age:</label>
+            <div class="col-sm-3">
+                <input type="number" class="form-control" id="age" placeholder="Age" name="age" ng-model="animal.age" readonly="readonly">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="addedDatetime">Added Date Time:</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" id="addedDatetime" placeholder="Added Date Time" name="addedDatetime" value="{{animal.addedDatetime | date:'medium'}}" readonly="readonly">
+            </div>
+        </div>
+
+        <div class="form-group" ng-if="animal.animalId">
+            <label class="control-label col-sm-2" for="modifiedDatetime">Modified Date Time:</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" id="modifiedDatetime" placeholder="Modified Date Time" name="modifiedDatetime" value="{{animal.modifiedDatetime | date:'medium'}}" readonly="readonly">
+            </div>
+
+        </div>
+
+       
+
+        <div class="form-group">
+
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn btn-success" ng-disabled="animalCreationForm.$invalid">Submit</button>
+                <button type="button" class="btn btn btn-warning" ng-click="reset()">Reset</button>
+            </div>
+        </div>
+
+    </form>
+</div>
