@@ -148,7 +148,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Registries\ServiceRegistry.cs" />
     <Compile Include="Tests\AnimalApiControllerTests.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -172,11 +171,6 @@
     <None Include="Scripts\libraries\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\libraries\jquery-1.10.2.js" />
     <Content Include="Scripts\libraries\jquery-1.10.2.min.js" />
-    <Content Include="Scripts\libraries\jquery.validate.js" />
-    <Content Include="Scripts\libraries\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\libraries\modernizr-2.6.2.js" />
-    <Content Include="Scripts\libraries\respond.js" />
-    <Content Include="Scripts\libraries\respond.min.js" />
     <Content Include="Content\toastr.css" />
     <Content Include="Scripts\libraries\toastr.js" />
     <Content Include="Content\toastr.min.css" />
@@ -213,7 +207,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -50,7 +50,7 @@ namespace ZooWebApp.Controllers
 
             if (!result)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Sorry, There was an error while saving Animal");
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Sorry, There was an error while saving Animal. Please try again");
             }
             return Request.CreateResponse(HttpStatusCode.OK, "Animal Saved Successfully!");
         }
@@ -63,7 +63,7 @@ namespace ZooWebApp.Controllers
 
             if (!result)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Sorry, There was an error while updating Animal");
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Sorry, There was an error while updating Animal. Please try again");
             }
             return Request.CreateResponse(HttpStatusCode.OK, "Animal Updated Successfully!");
         }
@@ -76,7 +76,7 @@ namespace ZooWebApp.Controllers
 
             if (!result)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Sorry, There was an error while deleting Animal");
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Sorry, There was an error while deleting Animal. Please try again");
             }
             return Request.CreateResponse(HttpStatusCode.OK, "Animal Deleted Successfully!");
         }

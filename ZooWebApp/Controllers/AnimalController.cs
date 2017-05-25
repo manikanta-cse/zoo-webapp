@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace ZooWebApp.Controllers
 {
@@ -11,20 +7,20 @@ namespace ZooWebApp.Controllers
 		//
 		// GET: /Animal/
 
-        public ActionResult Index()
-        {
-            return View();
-        }
+		public ActionResult Index()
+		{
+			return View();
+		}
 		public ActionResult List()
 		{
 			return View();
 		}
 
-        public ActionResult _Animal()
-        {
-            return View();
-        }
+		public ActionResult _Animal()
+		{
+			return View();
+		}
 
-      
+	  
 	}
 }
