@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Zoo.Services.Repository;
 
 
@@ -14,7 +15,7 @@ namespace Zoo.Services.Services
         }
         public IEnumerable<Models.Species> GetAll()
         {
-            return _zooRepository.GetSpecies();
+            return _zooRepository.GetSpecies().AsEnumerable();
         }
 
 

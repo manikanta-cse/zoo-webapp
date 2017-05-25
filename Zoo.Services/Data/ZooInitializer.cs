@@ -32,7 +32,8 @@ namespace Zoo.Services.Data
 
             var animals = new List<Animal>
             {
-                new Animal(){AnimalName = "Animal",YearOfBirth = 1981,AddedDateTime = DateTime.Now,SpeciesId = 1}
+                new Animal(){AnimalName = "Lion",YearOfBirth = 1981,AddedDateTime = DateTime.Now,SpeciesId = 1},
+                new Animal(){AnimalName = "Tiger",YearOfBirth = 1981,AddedDateTime = DateTime.Now,SpeciesId = 2}
             };
 
             animals.ForEach(a=>context.Animals.Add(a));
