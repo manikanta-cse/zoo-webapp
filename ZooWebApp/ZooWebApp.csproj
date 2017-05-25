@@ -149,6 +149,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\AnimalApiControllerTests.cs" />
+    <Compile Include="Tests\AnimalControllerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />

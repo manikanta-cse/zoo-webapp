@@ -28,9 +28,17 @@ namespace ZooWebApp.Tests
         [Test]
         public void AnimalApiController_GetAll_Should_Invoke_AnimalService_GetAll_To_Fetch_Animals_And_Should_Return_200_Status_Code()
         {
+            _animalService.GetAll().Returns(new AnimalsVm(){ Animals = new List<Animal>(){ new Animal(){ AnimalId = 1}}});
             var result = _animaApiController.GetAllAnimals();
-            _animalService.GetAll().Returns(new AnimalsVm());
             Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
+        }
+
+        [Test]
+        public void AnimalApiController_GetAll_Should_Invoke_AnimalService_GetAll_To_Fetch_Animals_And_Should_Return_400_Status_Code_When_No_Count_Is_0()
+        {
+            _animalService.GetAll().Returns(new AnimalsVm(){ Animals = new List<Animal>()});
+            var result = _animaApiController.GetAllAnimals();
+            Assert.AreEqual(HttpStatusCode.NotFound, result.StatusCode);
         }
 
         [Test]

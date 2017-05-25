@@ -9,16 +9,16 @@ namespace ZooWebApp.Controllers
 
 		public ActionResult Index()
 		{
-			return View();
+			return View("Index");
 		}
 		public ActionResult List()
 		{
-			return View();
+			return View("List");
 		}
 
 		public ActionResult _Animal()
 		{
-			return View();
+			return View("_Animal");
 		}
 
 	  
