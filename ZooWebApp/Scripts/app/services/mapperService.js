@@ -1,5 +1,9 @@
-﻿angular.module('zooApp').factory('mapperService',
-    function () {
+﻿(function() {
+
+    angular.module('zooApp').factory('mapperService',mapperService);
+
+
+    function mapperService() {
         var mapModelToViewModel = function (animal) {
             var animalViewModel = {};
             if (animal) {
@@ -38,4 +42,7 @@
             mapModelToViewModel: mapModelToViewModel,
             mapViewModelToModel: mapViewModelToModel
         }
-    })
+    }
+
+})();
+

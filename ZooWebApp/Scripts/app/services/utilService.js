@@ -1,5 +1,8 @@
-﻿angular.module('zooApp').factory('utilService',
-    function () {
+﻿(function() {
+
+    angular.module('zooApp').factory('utilService', utilService);
+
+    function utilService() {
 
         var getCurrentYear = function () {
 
@@ -14,10 +17,12 @@
 
         };
 
-
         return {
             calulateAge: calulateAge
             
         }
 
-    });
+    }
+
+})();
+

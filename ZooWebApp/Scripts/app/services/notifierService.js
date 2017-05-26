@@ -1,7 +1,10 @@
-﻿angular.module('zooApp').value('zooToastr', toastr);
+﻿(function() {
+    
+    angular.module('zooApp').value('zooToastr', toastr);
 
-angular.module('zooApp').factory('notifierService',
-    function (zooToastr) {
+    angular.module('zooApp').factory('notifierService', notifierService);
+
+    function notifierService(zooToastr) {
         return {
             notify: function (msg) {
                 zooToastr.success(msg);
@@ -13,4 +16,6 @@ angular.module('zooApp').factory('notifierService',
             }
         }
 
-    });
+    }
+
+})();
