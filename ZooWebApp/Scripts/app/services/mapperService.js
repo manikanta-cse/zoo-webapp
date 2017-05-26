@@ -28,8 +28,6 @@
                 animalModel.speciesId = animal.species.SpeciesId;
                 animalModel.animalId = animal.animalId || 0;
                 animalModel.yearOfBirth = animal.yearOfBirth;
-                animalModel.addedDatetime = animal.addedDatetime;
-                animalModel.modifiedDatetime = animalModel.animalId!==0 ? animal.modifiedDatetime : null;
             }
 
             return animalModel;

@@ -34,8 +34,10 @@ namespace Zoo.Services.Services
         {
             if (animal.AnimalId == 0)
             {
+                animal.AddedDateTime=DateTime.Now;
                 return _zooRepository.Insert(animal);
             }
+            animal.ModifiedDateTime=DateTime.Now;
             return _zooRepository.Update(animal);
         }
 

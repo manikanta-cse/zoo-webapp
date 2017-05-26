@@ -6,7 +6,6 @@ function animalCtrl($scope, $location, $routeParams, $window, animalService, spe
 
     $scope.species = [];
     $scope.animal = {};
-    setAddedDateTime();
     var animalId = $routeParams.id;
     $scope.title = !animalId ? 'Create Animal' : 'Update Animal';
 
@@ -35,8 +34,6 @@ function animalCtrl($scope, $location, $routeParams, $window, animalService, spe
         $scope.animalCreationForm.$setPristine();
         $scope.animalCreationForm.$setUntouched();
         $scope.animal = {};
-        setAddedDateTime();
-        setModifiedDateTime();
     };
 
     var save = function (animal) {
@@ -70,7 +67,6 @@ function animalCtrl($scope, $location, $routeParams, $window, animalService, spe
     if (animalId) {
         animalService.getAnimal(animalId).then(function (response) {
             $scope.animal = mapperService.mapModelToViewModel(response);
-            setModifiedDateTime();
         }, erroHandler);
         
     }
@@ -90,17 +86,6 @@ function animalCtrl($scope, $location, $routeParams, $window, animalService, spe
     function makeFeildValid(form, field, key) {
         form[field].$setValidity(key, true);
     }
-
-    function setAddedDateTime() {
-        $scope.animal.addedDatetime = $scope.animal.addedDatetime || new Date();
-       
-    };
-
-    function setModifiedDateTime() {
-        $scope.animal.modifiedDatetime = $scope.animal.modifiedDatetime || new Date();
-    }
-
-    
 
     function erroHandler(err) {
         notifierService.error(err.Message);
