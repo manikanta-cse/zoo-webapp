@@ -1,16 +1,12 @@
-﻿angular.module('zooApp').controller('animalListController',
-    function ($scope,
-        animalService,
-        notifierService, $window, $route) {
+﻿
+(function () {
+
+    angular.module('zooApp').controller('animalListController', animalListCtrl);
 
 
-        var getAnimals = function () {
-            animalService.getAnimals().then(function (response) {
-                $scope.animals = response;
-            }, erroHandler);
-        };
-
-
+    function animalListCtrl($scope,
+            animalService,
+            notifierService, $window, $route) {
 
         $scope.remove = function (animalId) {
             var isDelete = $window.confirm('Are you sure to delete the selected record ?');
@@ -29,6 +25,12 @@
             notifierService.error(err.Message);
         }
 
-        getAnimals();
+        //to load animals on the table
+        (function () {
+            animalService.getAnimals().then(function (response) {
+                $scope.animals = response;
+            }, erroHandler);
+        })();
+    }
 
-    });
+})();

@@ -18,18 +18,7 @@ namespace ZooWebApp
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Animal", action = "Index", id = UrlParameter.Optional }
             );
-
-            //routes.MapRoute(
-            //    name: "routeOne",
-            //    url: "Animal/List",
-            //    defaults: new { controller = "Animal", action = "List", id = UrlParameter.Optional }
-            //);
-
-            //routes.MapRoute(
-            //    name: "create",
-            //    url: "Animal/Create",
-            //    defaults: new { controller = "Animal", action = "Create", id = UrlParameter.Optional }
-            //);
+           
         }
     }
 }

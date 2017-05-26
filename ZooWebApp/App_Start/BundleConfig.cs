@@ -33,7 +33,7 @@ namespace ZooWebApp
             Include("~/Scripts/app/app.js")     
             .IncludeDirectory("~/Scripts/app/services", "*.js")
              .IncludeDirectory("~/Scripts/app/controllers", "*.js"));
-            
-        }
+
+         }
     }
 }

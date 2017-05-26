@@ -1,8 +1,12 @@
-﻿var app = angular.module('zooApp', ['ngRoute']);
+﻿
+(function () {
 
 
-app.config(['$routeProvider', "$locationProvider",
-    function ($routeProvider, $locationProvider) {
+
+    angular.module('zooApp', ['ngRoute'])
+    .config(configure);
+
+    function configure($routeProvider, $locationProvider) {
 
         $locationProvider.html5Mode(false).hashPrefix("");
 
@@ -26,6 +30,6 @@ app.config(['$routeProvider', "$locationProvider",
         });
 
     }
-]);
 
 
+})();

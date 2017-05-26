@@ -1,5 +1,8 @@
-﻿angular.module('zooApp').controller('animalController', function ($scope, $location, $routeParams, $window, animalService, speciesService, notifierService, mapperService, utilService) {
+﻿(function() {
 
+angular.module('zooApp').controller('animalController', animalCtrl);
+
+function animalCtrl($scope, $location, $routeParams, $window, animalService, speciesService, notifierService, mapperService, utilService) {
 
     $scope.species = [];
     $scope.animal = {};
@@ -29,11 +32,11 @@
 
     $scope.reset = function () {
 
-       $scope.animalCreationForm.$setPristine();
-       $scope.animalCreationForm.$setUntouched();
-       $scope.animal = {};
-       setAddedDateTime();
-       setModifiedDateTime();
+        $scope.animalCreationForm.$setPristine();
+        $scope.animalCreationForm.$setUntouched();
+        $scope.animal = {};
+        setAddedDateTime();
+        setModifiedDateTime();
     };
 
     var save = function (animal) {
@@ -72,20 +75,21 @@
         
     }
 
-    
 
-    speciesService.getSpecies().then(function (response) {
-        $scope.species = response;
-    }, erroHandler);
-
+    //to load species dropdown
+    (function() {
+        speciesService.getSpecies().then(function (response) {
+            $scope.species = response;
+        }, erroHandler);
+    })();
 
     function makeFeildInvalid(form, field, key) {
         form[field].$setValidity(key, false);
     }
 
-     function makeFeildValid(form, field, key) {
+    function makeFeildValid(form, field, key) {
         form[field].$setValidity(key, true);
-     }
+    }
 
     function setAddedDateTime() {
         $scope.animal.addedDatetime = $scope.animal.addedDatetime || new Date();
@@ -101,8 +105,6 @@
     function erroHandler(err) {
         notifierService.error(err.Message);
     }
+}
 
-   
-
-
-});
+})();
