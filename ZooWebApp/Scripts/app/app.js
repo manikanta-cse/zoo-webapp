@@ -13,7 +13,12 @@
         $routeProvider.when('/list', {
 
             templateUrl: '/Animal/List',
-            controller: 'animalListController'
+            controller: 'animalListController',
+            resolve: {
+                animals: function (animalService) {
+                    return animalService.getAnimals();
+                }
+            }
 
         }).when('/create', {
 

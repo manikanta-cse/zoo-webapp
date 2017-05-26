@@ -11,7 +11,7 @@
         <div class="form-group">
             <label class="control-label col-md-2" for="name">Animal Name :</label>
             <div class="col-md-3">
-                <input type="text" class="form-control" id="name" placeholder="Enter Animal Name" name="name" ng-model="animal.animalName" required="" ng-maxlength="15" ng-pattern="/^[a-zA-Z\s]*$/" ng-blur="validate()">
+                <input type="text" class="form-control" id="name" placeholder="Enter Animal Name" name="name" ng-model="animal.animalName" required="" ng-maxlength="15" ng-pattern="/^[a-zA-Z\s]*$/" ng-blur="validateAnimal()">
             </div>
             <div class="col-md-3 text-danger">
                 <div ng-show="animalCreationForm.name.$touched && animalCreationForm.name.$error.required">Animal Name is required</div>
@@ -22,7 +22,7 @@
         <div class="form-group">
             <label class="control-label col-sm-2" for="species">Species :</label>
             <div class="col-sm-3">
-                <select class="form-control" ng-model="animal.species" ng-options="specie.Name for specie in species track by specie.SpeciesId" id="species" name="species" required="" ng-blur="validate()">
+                <select class="form-control" ng-model="animal.species" ng-options="specie.Name for specie in species track by specie.SpeciesId" id="species" name="species" required="" ng-blur="validateAnimal()">
                     <option value="" selected="selected">Select Species</option>
                 </select>
             </div>

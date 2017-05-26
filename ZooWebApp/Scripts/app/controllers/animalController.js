@@ -15,7 +15,8 @@ function animalCtrl($scope, $location, $routeParams, $window, animalService, spe
     };
     
 
-    $scope.validate = function () {
+    //validates does the give animal already exists with the same name and species
+    $scope.validateAnimal = function () {
         if ($scope.animal.animalName && $scope.animal.species) {
            
             var animalModel = mapperService.mapViewModelToModel($scope.animal);
@@ -29,6 +30,7 @@ function animalCtrl($scope, $location, $routeParams, $window, animalService, spe
         };
     };
 
+    //resets the form and the model
     $scope.reset = function () {
 
         $scope.animalCreationForm.$setPristine();
@@ -36,6 +38,8 @@ function animalCtrl($scope, $location, $routeParams, $window, animalService, spe
         $scope.animal = {};
     };
 
+
+    //saves the given animal
     var save = function (animal) {
         var mappedModel = mapperService.mapViewModelToModel(animal);
         animalService.saveAnimal(mappedModel).then(function (response) {
@@ -46,6 +50,7 @@ function animalCtrl($scope, $location, $routeParams, $window, animalService, spe
         }, erroHandler);
     };
 
+    //updates the given animal
     var update = function (animal) {
         var animalUpdates = mapperService.mapViewModelToModel(animal);
         animalService.updateAnimal(animalUpdates).then(function (response) {
@@ -55,6 +60,7 @@ function animalCtrl($scope, $location, $routeParams, $window, animalService, spe
         }, erroHandler);
     };
 
+    //decision maker whether to save / update animal based in id
     $scope.submit = function (animal) {
         if (!animal.animalId) {
             save(animal);
@@ -63,7 +69,7 @@ function animalCtrl($scope, $location, $routeParams, $window, animalService, spe
         }
     };
 
-    //edit: if animalId exists 
+    //edit mode: if animalId exists 
     if (animalId) {
         animalService.getAnimal(animalId).then(function (response) {
             $scope.animal = mapperService.mapModelToViewModel(response);
@@ -79,14 +85,17 @@ function animalCtrl($scope, $location, $routeParams, $window, animalService, spe
         }, erroHandler);
     })();
 
+    //to make feld valid for custom valdation
     function makeFeildInvalid(form, field, key) {
         form[field].$setValidity(key, false);
     }
 
+    //to make feld invalid for custom valdation
     function makeFeildValid(form, field, key) {
         form[field].$setValidity(key, true);
     }
 
+    //genric error handler to a promise rejection callback
     function erroHandler(err) {
         notifierService.error(err.Message);
     }

@@ -6,8 +6,9 @@
 
     function animalListCtrl($scope,
             animalService,
-            notifierService, $window, $route) {
+            notifierService, $window, $route, animals) {
 
+        //delete: deletes the given animal
         $scope.remove = function (animalId) {
             var isDelete = $window.confirm('Are you sure to delete the selected record ?');
 
@@ -27,9 +28,7 @@
 
         //to load animals on the table
         (function () {
-            animalService.getAnimals().then(function (response) {
-                $scope.animals = response;
-            }, erroHandler);
+            $scope.animals = animals;
         })();
     }
 
